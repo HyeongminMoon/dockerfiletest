@@ -3,7 +3,8 @@ FROM nvidia/cuda:10.2-runtime-ubuntu18.04
 ENV PATH /opt/conda/bin:&PATH
 
 # Install dependencies of miniconda
-RUN apt-get update --fix-missing && \
+RUN rm -rf /var/lib/apt/lists/* && \
+    apt-get update --fix-missing && \
     apt-get install -y wget bzip2 curl git && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
